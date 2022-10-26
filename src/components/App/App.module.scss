@@ -1,0 +1,14 @@
+.App {
+  display: grid;
+  grid-row-gap: 20px;
+  grid-column-gap: 19px;
+  grid-template-areas:
+    'Logo Logo'
+    'Filters Sort'
+    'Filters Results'
+    'Filters Else';
+  grid-template-columns: 232px minmax(280px, 502px);/*temporarily*/
+  justify-content: center;
+  padding-bottom: 50px;
+  background: #F3F7FA;
+}

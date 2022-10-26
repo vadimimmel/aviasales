@@ -1,0 +1,11 @@
+@import '../../base/variables';
+
+.Else {
+  grid-area: Else;
+  text-transform: uppercase;
+  background: $main;
+  border-radius: 5px;
+  border: none;
+  padding: 15px 20px;
+  color: $primary-back;
+}

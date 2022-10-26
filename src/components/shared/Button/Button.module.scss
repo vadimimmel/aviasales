@@ -1,0 +1,25 @@
+@import '../../../base/variables';
+
+.Button {
+  padding: 15px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  background-color: $primary-back;
+  border: none;
+  border-radius: 5px;
+  cursor: url(../../../icons/Cursor.cur), pointer;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  &:hover {
+    background-color: $main;
+  }
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  &_active {
+    background-color: $main;
+    color: $primary-back;
+  }
+}
