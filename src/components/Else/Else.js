@@ -6,7 +6,7 @@ export function Else() {
   const cn = classNames(classes.Else)
 
   return (
-    <Button className={cn} onClick={false}>
+    <Button className={cn} onClick={() => {}}>
       показать ещё 5 билетов
     </Button>
   )

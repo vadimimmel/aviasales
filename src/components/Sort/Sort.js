@@ -1,4 +1,9 @@
+import { connect } from 'react-redux'
+
+import { sortTickets } from '../../services/actions'
+
 import { Button } from '../shared/Button'
+
 import classes from './Sort.module.scss'
 
 const buttonsConfig = [
@@ -7,18 +12,20 @@ const buttonsConfig = [
   { id: 'optimal', value: 'оптимальный' },
 ]
 
-export function Sort() {
-  const sortingButtons = buttonsConfig.map((item) => {
-    const { id, value } = item
-    let active = false
-
-    if (id === 'cheepest') active = true
+function Sort({ sorting, sortTickets }) {
+  const sortingButtons = buttonsConfig.map((button) => {
+    const { id, value } = button
+    const active = id === sorting ? true : false
+    const sort = (e) => {
+      sortTickets(e.target.id)
+    }
 
     return (
       <Button
         className={classes['Sort__button']}
-        onClick={false}
+        onClick={sort}
         active={active}
+        id={id}
         key={id}
       >
         {value}
@@ -32,3 +39,18 @@ export function Sort() {
     </section>
   )
 }
+
+const mapStatetoProps = (state) => {
+  return {
+    sorting: state.ticketSorting,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sortTickets: (buttonID) => dispatch(sortTickets(buttonID)),
+  }
+}
+
+// результат будет таким же как для (dispatch) => bindActionCreators(actions, dispatch) вместо actions
+export default connect(mapStatetoProps, mapDispatchToProps)(Sort)
