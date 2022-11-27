@@ -1,1 +1,0 @@
-.Sort{display:grid;grid-template-columns:repeat(3, 1fr);grid-area:Sort}.Sort__button{border-radius:0}.Sort__button:first-of-type{border-radius:5px 0 0 5px}.Sort__button:last-of-type{border-radius:0 5px 5px 0}.Sort__button_selected,.Sort__button:hover{color:#fff;background-color:#2196f3}/*# sourceMappingURL=Sort.css.map */

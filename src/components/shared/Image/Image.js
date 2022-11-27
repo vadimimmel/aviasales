@@ -1,5 +1,7 @@
 import classNames from 'classnames'
 
+import styles from './Image.module.scss'
+
 export function Image({
   src,
   alt,
@@ -13,9 +15,10 @@ export function Image({
     src = `https://via.placeholder.com/${width}x${height}`
   }
 
-  const cn = classNames(className, { circle })
+  const cn = classNames(className, { [styles.circle]: circle })
 
   return (
+    // <div className={}>
     <img
       src={src}
       alt={alt}
@@ -24,6 +27,7 @@ export function Image({
       height={height}
       {...attrs}
     />
+    // {/* </div> */}
   )
 }
 

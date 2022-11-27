@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { sortTickets } from '../../services/actions'
+import { sortTickets } from '../../actions'
 
 import { Button } from '../shared/Button'
 
@@ -46,11 +46,11 @@ const mapStatetoProps = (state) => {
   }
 }
 
+// результат для (dispatch) => bindActionCreators(actions, dispatch) такой же
 const mapDispatchToProps = (dispatch) => {
   return {
     sortTickets: (buttonID) => dispatch(sortTickets(buttonID)),
   }
 }
 
-// результат будет таким же как для (dispatch) => bindActionCreators(actions, dispatch) вместо actions
 export default connect(mapStatetoProps, mapDispatchToProps)(Sort)

@@ -5,10 +5,12 @@
   grid-template-areas:
     'Logo Logo'
     'Filters Sort'
-    'Filters Results'
-    'Filters Else';
-  grid-template-columns: 232px minmax(280px, 502px);/*temporarily*/
+    'Filters Results';
+  grid-template-columns: 232px minmax(280px, 502px); /*temporarily*/
   justify-content: center;
+  align-content: start;
   padding-bottom: 50px;
-  background: #F3F7FA;
+  background: #f3f7fa;
+  overflow: hidden;
+  min-height: 100vh;
 }

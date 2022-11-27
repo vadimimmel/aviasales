@@ -1,13 +1,29 @@
 import { Image } from '../shared/Image'
-import classes from './Card.module.scss' //prettrier must change it on single quotes and no semi
 
-export function Card() {
+import classes from './Card.module.scss'
+
+export function Card({ ticketData }) {
+  const {
+    price,
+    iconLink,
+    route,
+    backRoute,
+    duration,
+    backDuration,
+    layovers,
+    backLayovers,
+    stops,
+    backStops,
+    date,
+    backDate,
+  } = ticketData
+
   return (
     <div className={classes.Card}>
-      <div className={classes['Card__price']}>13 400 р</div>
+      <div className={classes['Card__price']}>{price} р</div>
       <div className={classes['Card__logoWrapper']}>
         <Image
-          src=""
+          src={iconLink}
           alt="s7"
           className={classes['Card__logo']}
           width={110}
@@ -15,29 +31,31 @@ export function Card() {
         />
       </div>
       <div className={classes['Card__about']}>
+        {/* информацию о рейсе "туда" */}
         <div className={classes['Card__info']}>
-          <div className={classes['Card__descr']}>MOW – HKT</div>
-          <div className={classes['Card__value']}>11:20 – 00:50</div>
+          <div className={classes['Card__descr']}>{route}</div>
+          <div className={classes['Card__value']}>{date}</div>
         </div>
         <div className={classes['Card__info']}>
-          <div className={classes['Card__descr']}>В пути</div>
-          <div className={classes['Card__value_length']}>13ч 30м</div>
+          <div className={classes['Card__descr']}>в пути</div>
+          <div className={classes['Card__value_length']}>{duration}</div>
         </div>
         <div className={classes['Card__info']}>
-          <div className={classes['Card__descr']}>2 пересадки</div>
-          <div className={classes['Card__value']}>HKG, JNB</div>
+          <div className={classes['Card__descr']}>{layovers}</div>
+          <div className={classes['Card__value']}>{stops}</div>
+        </div>
+        {/* информация о рейсе "обратно" */}
+        <div className={classes['Card__info']}>
+          <div className={classes['Card__descr']}>{backRoute}</div>
+          <div className={classes['Card__value']}>{backDate}</div>
         </div>
         <div className={classes['Card__info']}>
-          <div className={classes['Card__descr']}>MOW – HKT</div>
-          <div className={classes['Card__value']}>11:20 – 00:50</div>
+          <div className={classes['Card__descr']}>в пути</div>
+          <div className={classes['Card__value_length']}>{backDuration}</div>
         </div>
         <div className={classes['Card__info']}>
-          <div className={classes['Card__descr']}>В пути</div>
-          <div className={classes['Card__value_length']}>13ч 30м</div>
-        </div>
-        <div className={classes['Card__info']}>
-          <div className={classes['Card__descr']}>2 пересадки</div>
-          <div className={classes['Card__value']}>HKG, JNB</div>
+          <div className={classes['Card__descr']}>{backLayovers}</div>
+          <div className={classes['Card__value']}>{backStops}</div>
         </div>
       </div>
     </div>

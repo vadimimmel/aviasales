@@ -1,9 +1,9 @@
+@import '../../base/variables';
+
 .Logo {
   grid-area: Logo;
   display: grid;
   justify-content: center;
-}
-.Logo_img {
-  margin-top: 39px;
-  margin-bottom: 22px;
+  padding-top: 30px;
+  padding-bottom: 10px;
 }

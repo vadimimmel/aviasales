@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { setLayoverFilter } from '../../services/actions'
+import { setLayoverFilter } from '../../actions'
 
 import { Checkbox } from '../shared/Checkbox'
 

@@ -1,19 +1,32 @@
-import logo from '../../icons/Logo.svg'
+import { connect } from 'react-redux'
+
 import { Image } from '../shared/Image'
+import { Spinner } from '../Spinner'
 
 import classes from './Logo.module.scss'
 
-export function Logo() {
+import logo from '../../icons/Logo.svg'
+
+function Logo({ loading }) {
   return (
     <div className={classes.Logo} role="banner">
-      <Image
-        className={classes['Logo_img']}
-        src={logo}
-        alt="aviasales_logo"
-        width={60}
-        height={60}
-        circle
-      />
+      <Spinner loading={loading}>
+        <Image
+          src={logo}
+          alt="aviasales_logo"
+          width={98}
+          height={98}
+          circle={true}
+        />
+      </Spinner>
     </div>
   )
 }
+
+const mapStateToProps = ({ loading }) => {
+  return {
+    loading,
+  }
+}
+
+export default connect(mapStateToProps)(Logo)
