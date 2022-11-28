@@ -1,4 +1,4 @@
-@import '../../base/variables';
+@import '../../scss/base/variables';
 
 .Card {
   padding: 20px;
@@ -12,7 +12,6 @@
     'price price logo'
     'about about about'
     'about about about';
-  //  НУЖНО ИНАЧЕ РАЗМЕТИТЬ! обергуть в див нижнюю чвсть и разделить на 6 частей
   &__price {
     grid-area: price;
     font-weight: 600;
@@ -36,7 +35,6 @@
   }
   &__descr {
     font-weight: 600;
-    font-size: 12px;
     line-height: 18px;
     letter-spacing: 0.5px;
     color: $secondary-text;
@@ -52,6 +50,14 @@
       line-height: 15px;
       color: $primary-text;
       text-transform: lowercase;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .Card {
+    &__descr {
+      font-size: 10px;
     }
   }
 }

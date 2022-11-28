@@ -1,4 +1,4 @@
-@import '../../base/variables';
+@import '../../scss/base/variables';
 
 .Filters {
   background-color: $primary-back;
@@ -15,12 +15,10 @@
     display: grid;
     grid-gap: 10px;
     font-weight: 600;
-    font-size: 12px;
     line-height: 12px;
     letter-spacing: 0.5px;
   }
   &__name {
-    font-size: 12px;
     text-transform: uppercase;
   }
   &__label {
@@ -33,5 +31,11 @@
     margin-top: 10px;
     padding-left: 32px;
     letter-spacing: normal;
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .Filters {
+    padding: 20px 10px;
   }
 }
