@@ -9,7 +9,7 @@ import classes from './Sort.module.scss'
 const buttonsConfig = [
   { id: 'cheepest', value: 'самый дешёвый' },
   { id: 'fastest', value: 'самый быстрый' },
-  { id: 'optimal', value: 'оптимальный' },
+  { id: 'getLucky', value: 'мне повезёт' },
 ]
 
 function Sort({ sorting, sortTickets }) {

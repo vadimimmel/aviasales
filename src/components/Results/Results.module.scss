@@ -1,12 +1,21 @@
+@import '../../scss/base/variables';
+
 .Results {
   grid-area: Results;
   text-align: center;
   display: grid;
-  grid-gap: 20px;
+  &__items {
+    list-style-type: none;
+    display: grid;
+    grid-gap: 20px;
+    text-align: start;
+  }
 }
-.Results_items {
-  list-style-type: none;
-  display: grid;
-  grid-gap: 20px;
-  text-align: start;
+
+@media screen and (max-width: $tablet) {
+  .Results {
+    &__items {
+      grid-gap: 10px;
+    }
+  }
 }

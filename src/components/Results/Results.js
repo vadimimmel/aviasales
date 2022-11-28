@@ -53,7 +53,7 @@ function Results({
       const ticketData = normalizeData(ticket)
       const { id } = ticketData
       return (
-        <li className={classes['Results_item']} key={id}>
+        <li className={classes['Results__item']} key={id}>
           <Card ticketData={ticketData} />
         </li>
       )
@@ -63,7 +63,7 @@ function Results({
     <section className={classes.Results} role="main">
       {ticketList.length ? (
         <>
-          <ul className={classes['Results_items']}>{ticketList}</ul>
+          <ul className={classes['Results__items']}>{ticketList}</ul>
           <Else />
         </>
       ) : (

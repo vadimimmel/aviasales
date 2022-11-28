@@ -6,11 +6,13 @@ export function compare(param) {
 
     return totalDuration(a.segments) - totalDuration(b.segments)
   }
-  const optimal = () => {}
+  const getLucky = (a, b) => {
+    return a.price * Math.random() - b.price * Math.random()
+  }
   const sorting = {
     cheepest,
     fastest,
-    optimal,
+    getLucky,
   }
 
   return sorting[param]
