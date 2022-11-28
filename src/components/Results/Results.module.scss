@@ -4,6 +4,7 @@
   grid-area: Results;
   text-align: center;
   display: grid;
+  grid-gap: 20px;
   &__items {
     list-style-type: none;
     display: grid;
@@ -14,6 +15,7 @@
 
 @media screen and (max-width: $tablet) {
   .Results {
+    grid-gap: 10px;
     &__items {
       grid-gap: 10px;
     }
