@@ -1,4 +1,4 @@
-export function filterTicketsByLayover(layoverFilter) {
+export function getFilterCallback(layoverFilter) {
   const layovers = []
 
   for (let filter of layoverFilter) {
@@ -8,10 +8,12 @@ export function filterTicketsByLayover(layoverFilter) {
     }
   }
 
-  return function filter(ticket) {
+  return (ticket) => {
     const { segments } = ticket
     return segments.every((segment) => {
-      return typeof layovers[segment.stops.length] === 'number'
+      const len = segment.stops.length
+
+      return layovers.includes(len)
     })
   }
 }

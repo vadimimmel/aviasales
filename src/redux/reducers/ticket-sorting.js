@@ -1,8 +1,8 @@
-import { SORT_TICKETS } from '../actions'
+import { SET_TICKET_SORTING } from '../actions'
 
 export function ticketSorting(state = 'cheepest', action) {
   switch (action.type) {
-    case SORT_TICKETS:
+    case SET_TICKET_SORTING:
       return action.buttonID
     default:
       return state

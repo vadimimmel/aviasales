@@ -1,9 +1,9 @@
 @import '../../scss/base/variables';
 
 .Filters {
-  background-color: $primary-back;
-  box-shadow: 0px 2px 8px $shadow-checkbox;
-  color: $primary-text;
+  background-color: $bg-primary;
+  box-shadow: 0px 2px 8px $checkbox-shadow;
+  color: $text-primary;
   border-radius: 5px;
   grid-area: Filters;
   align-self: start;

@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 
-import classes from './Button.module.scss'
+import styles from './button.module.scss'
 
 export function Button({
   className,
@@ -20,8 +20,8 @@ export function Button({
 
   const cn = classNames(
     {
-      [classes.Button]: true,
-      [classes['Button_active']]: active,
+      [styles.Button]: true,
+      [styles['Button_active']]: active,
     },
     className
   )

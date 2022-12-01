@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 
-import styles from './Image.module.scss'
+import styles from './image.module.scss'
 
 export function Image({
   src,

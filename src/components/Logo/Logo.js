@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 
-import { Image } from '../shared/Image'
-import { Spinner } from '../Spinner'
+import { Image } from '../shared/image'
+import { Spinner } from '../spinner'
 
-import classes from './Logo.module.scss'
+import classes from './logo.module.scss'
 
-import logo from '../../icons/Logo.svg'
+import logo from '../../assets/icons/Logo.svg'
 
 function Logo({ loading }) {
   return (

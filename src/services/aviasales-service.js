@@ -1,21 +1,17 @@
 class AviasalesService {
-  // static apiBase = 'https://front-test.dev.aviasales.ru/'
-  static apiBase = 'https://aviasales-test-api.kata.academy/'
-
   getSearchID = async () => {
-    const { searchId } = await this.getResource(
-      `${AviasalesService.apiBase}search`
-    )
+    const { searchId } = await this.#getResource(`search`)
     return searchId
   }
 
   getPartTickets = async (searchID) => {
-    return await this.getResource(
-      `${AviasalesService.apiBase}tickets?searchId=${searchID}`
-    )
+    return await this.#getResource(`tickets?searchId=${searchID}`)
   }
 
-  getResource = async (url, requestNumber = 2) => {
+  #getResource = async (urlEnding, requestNumber = 2) => {
+    const apiBase = 'https://aviasales-test-api.kata.academy/'
+    const url = `${apiBase}${urlEnding}`
+
     try {
       const res = await fetch(url)
 
@@ -30,7 +26,7 @@ class AviasalesService {
         error
       )
       if (requestNumber) {
-        return this.getResource(url, requestNumber - 1)
+        return this.#getResource(urlEnding, requestNumber - 1)
       } else {
         throw error
       }
@@ -38,5 +34,4 @@ class AviasalesService {
   }
 }
 
-const aviasalesService = new AviasalesService()
-export { aviasalesService }
+export const aviasalesService = new AviasalesService()

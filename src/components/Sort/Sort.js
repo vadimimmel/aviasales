@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 
-import { sortTickets } from '../../actions'
+import { sortTickets } from '../../redux/actions'
 
-import { Button } from '../shared/Button'
+import { Button } from '../shared/button'
 
-import classes from './Sort.module.scss'
+import classes from './sort.module.scss'
 
 const buttonsConfig = [
   { id: 'cheepest', value: 'самый дешёвый' },

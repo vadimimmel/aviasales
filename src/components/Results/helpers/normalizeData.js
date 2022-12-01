@@ -4,6 +4,7 @@ import { convertPrice } from './convertPrice'
 import { convertDuration } from './convertDuration'
 import { countLayovers } from './countLayovers'
 import { convertDate } from './convertDate'
+import { addWordEnding } from './addWordEnding'
 
 export function normalizeData(dataObj) {
   const { price, carrier, segments } = dataObj
@@ -24,8 +25,8 @@ export function normalizeData(dataObj) {
     backRoute: `${backOrigin} - ${backDestination}`,
     duration: convertDuration(duration),
     backDuration: convertDuration(backDuration),
-    layovers: countLayovers(stops),
-    backLayovers: countLayovers(backStops),
+    layovers: addWordEnding(countLayovers(stops)),
+    backLayovers: addWordEnding(countLayovers(stops)),
     stops: stops.join(', '),
     backStops: backStops.join(', '),
     date: `${convertDate(date)} - ${convertDate(date, duration)}`,

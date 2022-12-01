@@ -2,75 +2,60 @@
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { setTickets, setLoading } from '../../actions'
-
-import { Card } from '../Card'
-import { Else } from '../Else'
-
-import classes from './Results.module.scss'
-
+import { Card } from '../card'
+import { ShowMore } from '../showMore'
 import { withAviasalesService } from '../hoc'
 
-import { normalizeData, compare, filterTicketsByLayover } from '../../helpers'
+import { compose } from '../../helpers'
+import { fetchTickets } from '../../redux/actions'
+import { normalizeData, getSortingCallback, getFilterCallback } from './helpers'
 
-function Results({
-  searchID,
+import styles from './results.module.scss'
+
+function TicketList({
   tickets,
   ticketSorting,
   numberOfTicketsDisplayed,
   layoverFilter,
-  setTickets,
-  setLoading,
-  aviasalesService,
 }) {
-  const { getPartTickets } = aviasalesService
-
-  useEffect(() => {
-    if (searchID) {
-      const getTickets = async (searchID) => {
-        let isMore = true
-
-        while (isMore) {
-          const { tickets, stop } = await getPartTickets(searchID)
-
-          setTickets(tickets)
-          setLoading(!stop)
-          isMore = !stop
-        }
-      }
-
-      getTickets(searchID)
-    }
-  }, [searchID, setTickets, setLoading, getPartTickets])
-
-  const filter = filterTicketsByLayover(layoverFilter)
-  const sortingType = compare(ticketSorting)
+  const filterCallback = getFilterCallback(layoverFilter)
+  const sortingCallback = getSortingCallback(ticketSorting)
   const ticketList = tickets
-    .filter(filter)
-    .sort(sortingType)
+    .filter(filterCallback)
+    .sort(sortingCallback)
     .slice(0, numberOfTicketsDisplayed)
     .map((ticket) => {
       const ticketData = normalizeData(ticket)
       const { id } = ticketData
       return (
-        <li className={classes['Results__item']} key={id}>
+        <li className={styles['Results__item']} key={id}>
           <Card ticketData={ticketData} />
         </li>
       )
     })
 
   return (
-    <section className={classes.Results} role="main">
+    <section className={styles.Results} role="main">
       {ticketList.length ? (
         <>
-          <ul className={classes['Results__items']}>{ticketList}</ul>
-          <Else />
+          <ul className={styles['Results__items']}>{ticketList}</ul>
+          <ShowMore numberOfTickets={5} />
         </>
       ) : (
         'Рейсов, подходящих под заданные фильтры, не найдено \u{1F614}'
       )}
     </section>
   )
+}
+
+function Results({ searchID, fetchTickets, ...restProps }) {
+  useEffect(() => {
+    if (searchID) {
+      fetchTickets(searchID)
+    }
+  }, [searchID, fetchTickets])
+
+  return <TicketList {...restProps} />
 }
 
 const mapStateToProps = ({
@@ -89,6 +74,13 @@ const mapStateToProps = ({
   }
 }
 
-export default withAviasalesService()(
-  connect(mapStateToProps, { setTickets, setLoading })(Results)
-)
+const mapDispatchToProps = (dispatch, { aviasalesService }) => {
+  return {
+    fetchTickets: fetchTickets(dispatch, aviasalesService),
+  }
+}
+
+export default compose(
+  withAviasalesService(),
+  connect(mapStateToProps, mapDispatchToProps)
+)(Results)

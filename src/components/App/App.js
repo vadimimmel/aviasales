@@ -1,26 +1,20 @@
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
-// import { compose } from 'redux-thunk'
 
-import classes from './App.module.scss'
-
-import { Logo } from '../Logo'
-import { Filters } from '../Filters'
-import { Sort } from '../Sort'
-import { Results } from '../Results'
+import { Logo } from '../logo'
+import { Filters } from '../filters'
+import { Sort } from '../sort'
+import { Results } from '../results'
 
 import { withAviasalesService } from '../hoc'
-import { setSearchID } from '../../actions'
+import { fetchSearchID } from '../../redux/actions'
+import { compose } from '../../helpers'
 
-function App({ searchID, setSearchID, aviasalesService }) {
-  const { getSearchID } = aviasalesService
-  useEffect(() => {
-    if (!searchID) {
-      getSearchID().then(setSearchID)
-    }
-  }, [searchID, getSearchID, setSearchID])
+import styles from './app.module.scss'
+
+function App() {
   return (
-    <div className={classes.App}>
+    <div className={styles.App}>
       <Logo />
       <Filters />
       <Sort />
@@ -29,16 +23,29 @@ function App({ searchID, setSearchID, aviasalesService }) {
   )
 }
 
+function AppContainer({ searchID, fetchSearchID }) {
+  useEffect(() => {
+    if (!searchID) {
+      fetchSearchID()
+    }
+  }, [searchID, fetchSearchID])
+
+  return <App />
+}
+
 const mapStateToProps = ({ searchID }) => {
   return {
     searchID,
   }
 }
 
-const mapDispatchToProps = {
-  setSearchID,
+const mapDispatchToProps = (dispatch, { aviasalesService }) => {
+  return {
+    fetchSearchID: fetchSearchID(dispatch, aviasalesService),
+  }
 }
 
-export default withAviasalesService()(
-  connect(mapStateToProps, mapDispatchToProps)(App)
-)
+export default compose(
+  withAviasalesService(),
+  connect(mapStateToProps, mapDispatchToProps)
+)(AppContainer)

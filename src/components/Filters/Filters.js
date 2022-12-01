@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 
-import { setLayoverFilter } from '../../actions'
+import { Checkbox } from '../shared/checkbox'
 
-import { Checkbox } from '../shared/Checkbox'
+import { setLayoverFilter } from '../../redux/actions'
 
-import classes from './Filters.module.scss'
+import styles from './filters.module.scss'
 
 function Filters({ filters, setLayoverFilter }) {
   const changeFilter = (e) => {
@@ -16,7 +16,7 @@ function Filters({ filters, setLayoverFilter }) {
 
     return (
       <Checkbox
-        className={classes['Filters__label']}
+        className={styles['Filters__label']}
         type="checkbox"
         id={id}
         key={id}
@@ -29,10 +29,10 @@ function Filters({ filters, setLayoverFilter }) {
   })
 
   return (
-    <section className={classes.Filters}>
+    <section className={styles.Filters}>
       <form>
-        <fieldset className={classes['Filters__options']}>
-          <legend className={classes['Filters__name']}>
+        <fieldset className={styles['Filters__options']}>
+          <legend className={styles['Filters__name']}>
             количество пересадок
           </legend>
           {filterList}

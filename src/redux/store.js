@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
-import { aviasales } from './aviasales'
+import { aviasales } from './reducers/aviasales'
 
 const composeEnhancers =
   (typeof window !== 'undefined' &&

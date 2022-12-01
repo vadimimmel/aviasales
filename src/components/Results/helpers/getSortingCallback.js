@@ -1,4 +1,4 @@
-export function compare(param) {
+export function getSortingCallback(param) {
   const cheepest = (a, b) => a.price - b.price
   const fastest = (a, b) => {
     const totalDuration = (segments) =>

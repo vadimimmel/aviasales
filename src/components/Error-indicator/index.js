@@ -1,1 +1,1 @@
-export { ErrorIndicator } from './Error-indicator'
+export { ErrorIndicator } from './error-indicator'

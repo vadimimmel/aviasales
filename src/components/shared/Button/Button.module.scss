@@ -4,10 +4,10 @@
   padding: 15px;
   font-weight: 600;
   line-height: 20px;
-  background-color: $primary-back;
+  background-color: $bg-primary;
   border: none;
   border-radius: 5px;
-  cursor: url(../../../icons/Cursor.cur), pointer;
+  cursor: url(../../../assets/icons/Cursor.cur), pointer;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   &:hover {
@@ -19,6 +19,6 @@
   }
   &_active {
     background-color: $main;
-    color: $primary-back;
+    color: $bg-primary;
   }
 }
