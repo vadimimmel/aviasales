@@ -1,19 +1,18 @@
 export function getFilterCallback(layoverFilter) {
   const layovers = []
-
-  for (let filter of layoverFilter) {
-    const { status, filterValue } = filter
+  layoverFilter.forEach((filt) => {
+    const { status, filterValue } = filt
     if (filterValue !== null && status === true) {
-      layovers[filterValue] = filterValue
+      layovers.push(filterValue)
     }
-  }
+  })
 
   return (ticket) => {
-    const { segments } = ticket
-    return segments.every((segment) => {
-      const len = segment.stops.length
+    const { stops, backStops } = ticket
 
-      return layovers.includes(len)
+    return [stops, backStops].every((item) => {
+      const quantity = item.split(', ').length
+      return layovers.includes(quantity)
     })
   }
 }

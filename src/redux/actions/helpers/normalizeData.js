@@ -1,5 +1,3 @@
-import { nanoid } from 'nanoid'
-
 import { convertPrice } from './convertPrice'
 import { convertDuration } from './convertDuration'
 import { countLayovers } from './countLayovers'
@@ -7,7 +5,7 @@ import { convertDate } from './convertDate'
 import { addWordEnding } from './addWordEnding'
 
 export function normalizeData(dataObj) {
-  const { price, carrier, segments } = dataObj
+  const { price, carrier, segments, id } = dataObj
   const [there, back] = segments
   const { origin, destination, date, stops, duration } = there
   const {
@@ -34,6 +32,8 @@ export function normalizeData(dataObj) {
       backDate,
       backDuration
     )}`,
-    id: nanoid(),
+    id: id,
+    _price: price,
+    _duration: duration + backDuration,
   }
 }
