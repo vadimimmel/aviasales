@@ -33,7 +33,5 @@ export function normalizeData(dataObj) {
       backDuration
     )}`,
     id: id,
-    _price: price,
-    _duration: duration + backDuration,
   }
 }

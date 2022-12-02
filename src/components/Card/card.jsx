@@ -2,7 +2,7 @@ import { Image } from '../shared/image'
 
 import styles from './card.module.scss'
 
-export function Card({ ticket }) {
+export function Card({ ticketData }) {
   const {
     price,
     iconLink,
@@ -16,7 +16,7 @@ export function Card({ ticket }) {
     backStops,
     date,
     backDate,
-  } = ticket
+  } = ticketData
 
   return (
     <div className={styles.Card}>

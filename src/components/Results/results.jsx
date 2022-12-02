@@ -9,7 +9,7 @@ import { withAviasalesService } from '../hoc'
 
 import { compose } from '../../helpers'
 import { fetchTickets } from '../../redux/actions'
-import { getSortingCallback, getFilterCallback } from './helpers'
+import { getSortingCallback, getFilterCallback, normalizeData } from './helpers'
 
 import styles from './results.module.scss'
 
@@ -26,10 +26,11 @@ function TicketList({
     .sort(sortingCallback)
     .slice(0, numberOfTicketsDisplayed)
     .map((ticket) => {
+      const ticketData = normalizeData(ticket)
       const { id } = ticket
       return (
         <li className={styles['Results__item']} key={id}>
-          <Card ticket={ticket} />
+          <Card ticketData={ticketData} />
         </li>
       )
     })

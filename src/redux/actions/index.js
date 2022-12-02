@@ -1,7 +1,5 @@
 import { nanoid } from 'nanoid'
 
-import { normalizeData } from './helpers'
-
 //action types
 export const FETCH_SEARCH_ID = 'FETCH_SEARCH_ID'
 export const FETCH_TICKETS_SUCCESS = 'FETCH_TICKETS_SUCCESS'
@@ -41,12 +39,12 @@ export const setSearchID = (searchID) => {
 }
 
 export const setTickets = (tickets) => {
-  const normalizedTickets = tickets.map((ticket) => {
-    return { ...normalizeData(ticket), id: nanoid() }
+  const ticketsWithID = tickets.map((ticket) => {
+    return { ...ticket, id: nanoid() }
   })
   return {
     type: FETCH_TICKETS_SUCCESS,
-    tickets: normalizedTickets,
+    tickets: ticketsWithID,
   }
 }
 

@@ -8,10 +8,10 @@ export function getFilterCallback(layoverFilter) {
   })
 
   return (ticket) => {
-    const { stops, backStops } = ticket
+    const { segments } = ticket
 
-    return [stops, backStops].every((item) => {
-      const quantity = item.split(', ').length
+    return segments.every((s) => {
+      const quantity = s.stops.length
       return layovers.includes(quantity)
     })
   }

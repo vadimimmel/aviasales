@@ -1,8 +1,8 @@
 export function getSortingCallback(param) {
-  const cheepest = (a, b) => a._price - b._price
-  const fastest = (a, b) => a._duration - b._duration
+  const cheepest = (a, b) => a.price - b.price
+  const fastest = (a, b) => a.duration - b.duration
   const getLucky = (a, b) => {
-    return a._price * Math.random() - b._price * Math.random()
+    return a.price * Math.random() - b.price * Math.random()
   }
   const sorting = {
     cheepest,
