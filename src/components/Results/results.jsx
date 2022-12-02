@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import { Card } from '../card'
 import { ShowMore } from '../showMore'
@@ -74,10 +75,21 @@ const mapStateToProps = ({
   }
 }
 
+// ВАРИАНТ БЕЗ ACTION CREATOR
+
+// const mapDispatchToProps = (dispatch, { aviasalesService }) => {
+//   return {
+//     fetchTickets: fetchTickets(dispatch, aviasalesService),
+//   }
+// }
+
+//ВАРИАНТ С ACTION CREATOR, ИСПОЛЬЗУЯ БИБЛИОТЕКУ THUNK
+
 const mapDispatchToProps = (dispatch, { aviasalesService }) => {
-  return {
-    fetchTickets: fetchTickets(dispatch, aviasalesService),
-  }
+  return bindActionCreators(
+    { fetchTickets: fetchTickets(aviasalesService) },
+    dispatch
+  )
 }
 
 export default compose(

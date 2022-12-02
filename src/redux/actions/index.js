@@ -64,7 +64,37 @@ export const ticketsError = (error) => {
   }
 }
 
-export const fetchSearchID = (dispatch, aviasalesService) => () => {
+// ВАРИАНТ БЕЗ ACTION CREATOR
+
+// export const fetchSearchID = (dispatch, aviasalesService) => () => {
+//   aviasalesService
+//     .getSearchID()
+//     .then((data) => dispatch(setSearchID(data)))
+//     .catch((error) => dispatch(ticketsError(error)))
+// }
+
+// export const fetchTickets =
+//   (dispatch, aviasalesService) => async (searchID) => {
+//     try {
+//       let isMore = true
+
+//       while (isMore) {
+//         const { tickets, stop } = await aviasalesService.getPartTickets(
+//           searchID
+//         )
+
+//         dispatch(setTickets(tickets))
+//         dispatch(setLoading(!stop))
+//         isMore = !stop
+//       }
+//     } catch (error) {
+//       dispatch(ticketsError(error))
+//     }
+//   }
+
+//ВАРИАНТ С ACTION CREATOR, ИСПОЛЬЗУЯ БИБЛИОТЕКУ THUNK
+
+export const fetchSearchID = (aviasalesService) => () => (dispatch) => {
   aviasalesService
     .getSearchID()
     .then((data) => dispatch(setSearchID(data)))
@@ -72,7 +102,7 @@ export const fetchSearchID = (dispatch, aviasalesService) => () => {
 }
 
 export const fetchTickets =
-  (dispatch, aviasalesService) => async (searchID) => {
+  (aviasalesService) => (searchID) => async (dispatch) => {
     try {
       let isMore = true
 

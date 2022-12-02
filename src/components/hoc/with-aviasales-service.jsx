@@ -1,4 +1,4 @@
-import { AviasalesServiceConsumer } from '../aviasales-service-context/'
+import { AviasalesServiceConsumer } from '../aviasales-service-context'
 
 const withAviasalesService = () => (Component) => {
   return (props) => {
